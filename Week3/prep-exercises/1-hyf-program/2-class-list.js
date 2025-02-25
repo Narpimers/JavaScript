@@ -1,4 +1,4 @@
-import { modules, students, mentors, classes } from "./hyf.js";
+import { modules, students, mentors, classes} from "./hyf.js";
 
 /**
  * We would like to have a list of everyone that is currently participating in a class.
@@ -10,9 +10,38 @@ import { modules, students, mentors, classes } from "./hyf.js";
  * Should return the list of names and their roles. So something like:
  *
  *  [{ name: 'John', role: 'student' }, { name: 'Mary', role: 'mentor' }]
+ * 
+ * 
  */
+
+// const mentorsCanTeach = mentors
+// .filter(methods => methods.canTeach.some(method => method === moduleName)) 
+// .map(mentor => mentor.name);
+// return mentorsCanTeach;
+
 const getPeopleOfClass = (className) => {
-  // TODO complete this function
+
+  const studentsInClass = students.filter(student => student.class === className)
+  .map(student => student.name);
+
+  const moduleName = classes.filter(whatClassIs => whatClassIs.name === className)
+  .map(module => module.currentModule)[0];
+  
+  const mentorName =  mentors.filter(mod => mod.nowTeaching === moduleName)
+  .map(TeacherName => TeacherName.name)[0];
+
+  const listOfNames = [
+    {
+      name: studentsInClass[0],
+      role: 'student'
+    },
+    {
+      name: mentorName,
+      role: 'mentor'
+
+    },
+  ];
+  return listOfNames;
 };
 // You can uncomment out this line to try your function
 // console.log(getPeopleOfClass('class34'));
@@ -29,8 +58,16 @@ const getPeopleOfClass = (className) => {
  *    class35: [{ name: 'Jane', role: 'student' }, { name: 'Steve', role: 'mentor' }]
  *  }
  */
+
 const getActiveClasses = () => {
-  // TODO complete this function
+  const activeClasses = classes.filter(cls => cls.active);
+
+  const result = {};
+  
+  activeClasses.forEach(element => {
+    result[element.name] = getPeopleOfClass(element.name);
+  });
+
+  return result; 
 };
-// You can uncomment out this line to try your function
-// console.log(getActiveClasses());
+console.log(getActiveClasses());

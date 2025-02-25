@@ -8,10 +8,12 @@ import { modules, students, mentors, classes } from "./hyf.js";
  *  ['John', 'Mary']
  */
 const possibleMentorsForModule = (moduleName) => {
-  // TODO complete this function
+  const mentorsCanTeach = mentors
+    .filter(methods => methods.canTeach.some(method => method === moduleName)) 
+    .map(mentor => mentor.name);
+    return mentorsCanTeach;
 };
-// You can uncomment out this line to try your function
-// console.log(possibleMentorsForModule('using-apis'));
+console.log(possibleMentorsForModule('javascript'));
 
 /**
  * Tjebbe wants to make it even easier for himself.
@@ -20,7 +22,11 @@ const possibleMentorsForModule = (moduleName) => {
  * It should return a single name.
  */
 const findMentorForModule = (moduleName) => {
-  // TODO complete this function
+  const mentorsCanTeach = mentors
+    .filter(methods => methods.canTeach.some(method => method === moduleName)) 
+    .map(mentor => mentor.name);
+    return  mentorsCanTeach[(Math.floor(Math.random() * mentorsCanTeach.length))];
 };
 // You can uncomment out this line to try your function
-// console.log(findMentorForModule('javascript'));
+console.log(findMentorForModule('javascript'));
+
