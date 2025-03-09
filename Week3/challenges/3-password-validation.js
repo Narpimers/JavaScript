@@ -21,3 +21,17 @@ const passwordList = [
     { times: '1-3', letter: 'b', password: 'cdefg'},
     { times: '2-9', letter: 'c', password: 'ccccccccc'}
 ];
+
+    const passwordPolicy= (policy) => {
+        policy.forEach(element => {
+            const [min, max] = element.times.split("-").map(Number);
+            let letters = element.password.split(element.letter).length - 1;
+
+            if (letters >= min && letters <= max) {
+                console.log(`${element.password} is VALID, ${element.letter} is present ${letters} times and should have been present at least ${[min]} and at most ${[max]} times`);
+            } else {
+                console.log(`${element.password} is INVALID, "${element.letter}" is present ${letters} times and should have been present at least ${[min]} and at most ${[max]} times`);    
+            }
+        });
+    }
+console.log(passwordPolicy(passwordList));

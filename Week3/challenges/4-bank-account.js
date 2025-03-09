@@ -27,12 +27,19 @@ const bankAccount = {
   ],
 };
 
+const transaction = () => {
+  bankAccount.currentBalance -= amount;
+  bankAccount.transactions.push( {prevAmount: bankAccount.transactions[0].prevAmount - amount,
+    newAmount: bankAccount.transactions[0].newAmount - amount,   
+    reason: reason,
+  })
+};
+
 const donateMoney = (amount, onSuccess, onFail) => {
-  // TODO complete this function
-};
+  
+}; 
 const payRent = (amount, onSuccess, onFail) => {
-  // TODO complete this function
-};
+  };
 
 /**
  * TEST CODE. DO NOT EDIT
@@ -61,33 +68,33 @@ console.log(bankAccount);
 donateMoney(100, onSuccessDutch, onFailDutch);
 console.log(bankAccount);
 
-/**
-* The console should print out the following:
-Payment successful! Thank you!
-{
-currentBalance: 150,
-transactions: [
-  { prevAmount: 350, newAmount: 250, reason: 'Donation' },
-  { prevAmount: 250, newAmount: 150, reason: 'Donation' }
-]
-}
-Payment successful! Thank you!
-{
-currentBalance: 50,
-transactions: [
-  { prevAmount: 350, newAmount: 250, reason: 'Donation' },
-  { prevAmount: 250, newAmount: 150, reason: 'Donation' },
-  { prevAmount: 150, newAmount: 50, reason: 'Rent' }
-]
-}
-U heeft niet voldoende saldo om deze betaling te doen.
-{
-currentBalance: 50,
-transactions: [
-  { prevAmount: 350, newAmount: 250, reason: 'Donation' },
-  { prevAmount: 250, newAmount: 150, reason: 'Donation' },
-  { prevAmount: 150, newAmount: 50, reason: 'Rent' }
-]
-}
-* 
-*/
+// /**
+// * The console should print out the following:
+// Payment successful! Thank you!
+// {
+// currentBalance: 150,
+// transactions: [
+//   { prevAmount: 350, newAmount: 250, reason: 'Donation' },
+//   { prevAmount: 250, newAmount: 150, reason: 'Donation' }
+// ]
+// }
+// Payment successful! Thank you!
+// {
+// currentBalance: 50,
+// transactions: [
+//   { prevAmount: 350, newAmount: 250, reason: 'Donation' },
+//   { prevAmount: 250, newAmount: 150, reason: 'Donation' },
+//   { prevAmount: 150, newAmount: 50, reason: 'Rent' }
+// ]
+// }
+// U heeft niet voldoende saldo om deze betaling te doen.
+// {
+// currentBalance: 50,
+// transactions: [
+//   { prevAmount: 350, newAmount: 250, reason: 'Donation' },
+//   { prevAmount: 250, newAmount: 150, reason: 'Donation' },
+//   { prevAmount: 150, newAmount: 50, reason: 'Rent' }
+// ]
+// }
+// * 
+// */

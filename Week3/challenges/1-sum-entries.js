@@ -9,9 +9,20 @@ Once you have found those numbers, multiply the numbers and store the result of 
 
 const list = [1721, 979, 366, 299, 675, 1456];
 let result;
-    
+
 // Write your code here
 
+const someFunction = (year) => {
+    year.forEach((element) => {
+        for (let i = 1; i < year.length; i++) {
+            if (element + year[i] === 2020) {
+                result = element * year[i]
+            }
+        }
+    });
+};
+
+someFunction(list);
 
 // TEST CODE, do not change
 console.assert(result === 514579, `The result is not correct, it is ${result}, but should be 514579`);
